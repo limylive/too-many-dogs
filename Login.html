@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Free Responsive Html5 Templates">
+	<meta name="author" content="">
+
+	<title></title>
+
+	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+	<!-- SmartMenus jQuery Bootstrap Addon CSS -->
+	<link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Custom Fonts -->
+	<link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css" type="text/css">
+
+	<link rel="stylesheet" href="css/lightbox.css">
+
+	<!-- Core JavaScript Files -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<!-- Static navbar -->
+	<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">DOG</a>
+		</div>
+		<div class="navbar-collapse collapse">
+
+
+
+
+
+
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+
+	<header>
+		<div class="logo">
+			<a href="#">
+				<p style="font-size: 50px;color: black;font-weight: bold;">Too  many dogs</p>
+			</a>
+		</div>
+	</header>
+
+	<div id="page-content" class="sub-page">
+		<div class="container">
+			<center>
+				<article>
+					<h2 class="center">登录</h2>
+					<div id="contact_form">
+						<form name="form1" id="ff" method="post" action="">
+							<label style="margin: 0px;padding: 0px;">
+								<span>用户名:</span>
+								<input type="text" name="name" id="name" style="position: relative;">
+
+								<span style="position: absolute;top: 300px;right: 430px;color: red;" id="usersp"></span>
+
+							</label>
+							<label>
+								<span>密码:</span>
+								<input type="password" name="password" id="password">
+
+								<span style="position: absolute;top: 409px;right: 430px;color: red;" id="pwdsp"></span>
+							</label>
+							<label>
+								<span>邮箱:</span>
+								<input type="email" name="email" id="email">
+
+								<span style="position: absolute;top: 510px;right: 430px;color: red;"
+									id="emailsp"></span>
+							</label>
+
+							<center>
+								<input class="sendButton" id="b" type="button" name="button" value="登录" >
+							</center>
+						</form>
+					</div>
+				</article>
+			</center>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+         
+			$("#b").click(function () {
+				$.get("json/Login.json", function (a) {
+					//获取用户输入框内容
+					var n = $("#name").val();
+					//获取密码输入框内容
+					var p = $("#password").val();
+					//获取邮箱输入框内容
+					var e = $("#email").val();
+					
+					var flag = false;
+					var v = '';
+					
+					$.each(a, function (index, value) {
+						if (value.name == n && value.pwd == p && value.email == e) {
+							flag = true;
+							v = value.name;
+						}
+					})
+					
+				 	if (flag) {
+						window.location = "index.html?" + v;
+					}
+				})
+			})
+			//账号检测
+			$("#name").blur(function () {
+				$.get("json/Login.json", function (a) {
+					var flag = false;
+					var user = $("#usersp")
+
+				
+					var n = $("#name").val();
+				
+																		
+					$.each(a, function (index, value) {
+						if (n == '') {
+							user.text("用户名不能为空")
+						} else if (n != value.name) {
+							user.text("用户名不存在")
+						} else if (n == value.name) {
+							flag = true;
+						}
+					})
+					if (flag) {
+						user.text("该用户名可以用")
+					}
+				})
+			})
+
+			//密码检测
+			$("#password").blur(function () {
+				$.get("json/Login.json", function (a) {
+					//var flag = false;
+					var pwd = $("#pwdsp")					
+					var p = $("#password").val();
+					var n = $("#name").val();
+					var flag = false;
+					$.each(a, function (index, value) {
+						if (p == '') {
+							pwd.text("密码不能为空")
+						} else if (n == value.name) {
+							if (p != value.pwd) {
+								pwd.text("密码错误")
+							} else if (p == value.pwd) {
+								flag = true;
+							}
+						}
+
+					})
+					if (flag) {
+						pwd.text("密码正确")
+					}
+				})
+			})
+
+			//邮箱检测
+			$("#email").blur(function () {
+				$.get("json/Login.json", function (a) {
+				
+				    var email = $("#emailsp")					
+					var p = $("#password").val();
+					var n = $("#name").val();
+				    var e = $("#email").val();	
+					var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+					      
+					  console.log(e)
+					var flag = false;
+					$.each(a, function (index, value) {
+						if (e == '') {
+							email.text("邮箱不能为空")
+						} else if (n == value.name && p==value.pwd) {
+							if(!reg.test(e)){
+								email.text("邮箱格式错误")
+								return false;
+							}
+							if (e != value.email) {
+								email.text("邮箱错误")
+							} 
+							 else if (p == value.pwd) {
+								flag = true;
+							}
+						}
+					})
+					if (flag) {
+						email.text("邮箱正确")
+					}
+				})
+			})
+			$("#b").click(function(){
+					//获取用户输入框内容
+					var n = $("#name").val();
+					//获取密码输入框内容
+					var p = $("#password").val();
+					//获取邮箱输入框内容
+					var e = $("#email").val();
+
+					var user = $("#usersp")
+					var pwd = $("#pwdsp")		
+					var email = $("#emailsp")	
+				    if(n=='' && p=='' && e==''){
+                       user.text("用户名不能为空")
+					   pwd.text("密码不能为空")
+					   email.text("邮箱不能为空")
+					}if(n==''){
+						user.text("用户名不能为空")
+					}if( p==''){
+						pwd.text("密码不能为空")
+					}if(e==''){
+						email.text("邮箱不能为空")
+					}
+
+					
+			})
+
+		})
+	</script>
+	<!-- Once the page is loaded, initialized the plugin. -->
+	<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- SmartMenus jQuery plugin -->
+	<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+
+	<!-- SmartMenus jQuery Bootstrap Addon -->
+	<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+
+	<script src="js/lightbox-plus-jquery.min.js"></script>
+</body>
+
+</html>

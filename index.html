@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Free Responsive Html5 Templates">
+	<meta name="author" content="">
+
+	<title>Home</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+	<!-- SmartMenus jQuery Bootstrap Addon CSS -->
+	<link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Custom Fonts -->
+	<link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css" type="text/css">
+
+	<link rel="stylesheet" href="css/lightbox.css">
+
+	<!-- Core JavaScript Files -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<style>
+	.example-image {
+		width: 240px;
+		height: 150px;
+	}
+</style>
+
+<body>
+
+	<!-- Static navbar -->
+	<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+		<div class="navbar-header">
+
+			<a class="navbar-brand">DOG</a>
+		</div>
+		<div class="navbar-collapse collapse">
+
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" id="s" class="form-control" placeholder="Search">
+				</div>
+
+				<button type="submit" id="su" class="btn btn-search">Submit</button>
+			</form>
+		</div>
+	</div>
+
+
+	<header>
+		<div class="logo">
+			<a href="#">
+				<p style="font-size: 50px;color: black;font-weight: bold;">Too  many dogs</p>
+			</a>
+		</div>
+
+		<div class="">
+			<p id="pp" style="margin-left: -1200px;font-size: 20px;color: black;"></p>
+		</div>
+		<script>
+			$(function () {
+				var p = $("#pp");
+				var info = decodeURI(window.location.search);
+				//document.write(info); 
+				var str = info.split("?");
+				console.log(str[1]);
+				p.html("欢迎" + str[1] + "来到DOG");
+			})
+		</script>
+	</header>
+
+	<div id="page-content" class="index-page">
+		
+		<script>
+			$(document).ready(function () {
+				$.get("json/Dog.json", function (data) {
+					var str = "";
+					var dd=data.small;		            		 
+					 for (var i in dd) {
+						var num = Math.round(Math.random() * 1000);
+					 	var num2 = Math.round(Math.random() * 1000);
+					 	var num3 = Math.round(Math.random() * 1000);
+					 	var num4 = Math.round(Math.random() * 1000);
+						$("#a"+i).attr("href",dd[i].src);
+						$("#img"+i).attr("src",dd[i].src);
+						$("#h"+i).text(dd[i].dname);
+						$("#p"+i).text(dd[i].intro);
+						$("#h"+i).attr("href","single.html?"+dd[i].dname+ "+" + num + "+" +num2 + "+" + num3 + "+" + num4 );
+						$("#i"+i).text(num);
+						$("#ii"+i).text(num2);
+						$("#iii"+i).text(num3);
+						$("#iiii"+i).text(num4);
+                     
+					
+
+					// $("#container").append(  " <div class='item'>" +
+					// 		"<a class='example-image-link'  href='" + dog.src +
+					// 		"' data-lightbox='example-set' data-title='Click the right half of the image to move forward.'>" +
+					// 		"<img class='example-image' src='" + dog.src + "'/></a>" +
+					// 		"<div class='content-item'>" +
+					// 		"<span class='time'><a class='btn btn-1'>简介</a> </span>" +
+					// 		"<h3 class='title-item'><a href='single.html?" + dog.dname + "+" + num + "+" +
+					// 		num2 + "+" + num3 + "+" + num4 + "'>" + dog.dname + "</a></h3>" +
+					// 		"<p class='info'>" + dog.intro + "</p>" +
+					// 		"<ul class='list-inline'>" +
+					// 		"<li><a href='#'><i class='fa fa-eye'></i>" + num + "</a></li>" +
+					// 		"<li><a href='#'><i class='fa fa-comment'></i> " + num2 + "</a></li>" +
+					// 		"<li><a href='#'><i class='fa fa-heart'></i> " + num3 + "</a></li>" +
+					// 		"<li><a href='#'><i class='fa fa-share'></i> " + num4 + "</a></li>" +
+					// 		"</ul>" +
+					// 		"</div>" ) 
+					
+					}
+
+					$("#su").click(function () {
+						var s1 = $("#s").val();
+						$.get("json/Dog.json", function (data1) {
+							for (var vv1 of data1.big) {
+								if (s1 == vv1.dname) {
+									window.location = "single.html?" + s1 + "+" + num + "+" +
+										num2 + "+" + num3 + "+" + num4;
+								}
+							}
+						});
+					})
+
+				});
+			})
+		</script>
+		<!-- <script>
+			
+			   
+					
+		</script> -->
+		<div id="container">
+			
+		  <div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height: 388.4px;">
+					
+				<a class="example-image-link" id="a0" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img0" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-1">简介</a></span>
+					<h3 class="title-item"><a href="" id="h0"></a></h3>
+					<p class="info" id="p0"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i0" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii0"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii0"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii0"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:367.6px;">
+				<a class="example-image-link" id="a1" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img1" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-2">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h1"></a></h3>
+					<p class="info" id="p1"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i1" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii1"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii1"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii1"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:388.4px;">
+				<a class="example-image-link" id="a2" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img2" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-3">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h2"></a></h3>
+					<p class="info" id="p2"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i2" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii2"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii2"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii2"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:430px;">
+				<a class="example-image-link" id="a3" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img3" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-4">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h3"></a></h3>
+					<p class="info" id="p3"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i3" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii3"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii3"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii3"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:492.4px;">
+				<a class="example-image-link" id="a4" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img4" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-5">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h4"></a></h3>
+					<p class="info" id="p4"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i4" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii4"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii4"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii4"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:471.6px;">
+				<a class="example-image-link" id="a5" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img5" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-1">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h5"></a></h3>
+					<p class="info" id="p5"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i5" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii5"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii5"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii5"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:430px;">
+				<a class="example-image-link" id="a6" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img6" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-2">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h6"></a></h3>
+					<p class="info" id="p6"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i6" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii6"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii6"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii6"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+              
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:430px;">
+				<a class="example-image-link" id="a7" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img7" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-3">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h7"></a></h3>
+					<p class="info" id="p7"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i7" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii7"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii7"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii7"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a8" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img8" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-4">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h8"></a></h3>
+					<p class="info" id="p8"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i8" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii8"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii8"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii8"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:430px;">
+				<a class="example-image-link" id="a9" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img9" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-5">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h9"></a></h3>
+					<p class="info" id="p9"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i9" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii9"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii9"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii9"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a10" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img10" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-1">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h10"></a></h3>
+					<p class="info" id="p10"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i10" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii10"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii10"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii10"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a11" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img11" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-2">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h11"></a></h3>
+					<p class="info" id="p11"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i11" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii11"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii11"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii11"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a12" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img12" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-3">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h12"></a></h3>
+					<p class="info" id="p12"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i12" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii12"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii12"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii12"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:429.2px;">
+				<a class="example-image-link" id="a13" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img13" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-4">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h13"></a></h3>
+					<p class="info" id="p13"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i13" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii13"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii13"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii13"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a14" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img14" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-5">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h14"></a></h3>
+					<p class="info" id="p14"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i14" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii14"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii14"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii14"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+
+
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a15" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img15" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-1">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h15"></a></h3>
+					<p class="info" id="p15"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i15" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii15"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii15"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii15"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a16" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img16" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-2">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h16"></a></h3>
+					<p class="info" id="p16"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i16" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii16"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii16"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii16"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:389.4px;">
+				<a class="example-image-link" id="a17" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img17" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-3">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h17"></a></h3>
+					<p class="info" id="p17"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i17" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii17"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii17"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii17"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:346.8px;">
+				<a class="example-image-link" id="a18" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img18" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-4">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h18"></a></h3>
+					<p class="info" id="p18"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i18" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii18"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii18"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii18"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:346.8px;">
+				<a class="example-image-link" id="a19" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img19" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-5">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h19"></a></h3>
+					<p class="info" id="p19"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i19" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii19"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii19"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii19"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:367.6px;">
+				<a class="example-image-link" id="a20" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img20" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-1">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h20"></a></h3>
+					<p class="info" id="p20"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i20" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii20"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii20"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii20"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:388.4px;">
+				<a class="example-image-link" id="a21" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img21" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-2">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h21"></a></h3>
+					<p class="info" id="p21"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i21" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii21"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii21"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii21"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a22" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img22" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-3">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h22"></a></h3>
+					<p class="info" id="p22"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i22" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii22"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii22"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii22"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:471.6px;">
+				<a class="example-image-link" id="a23" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img23" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-4">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h23"></a></h3>
+					<p class="info" id="p23"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i23" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii23"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii23"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii23"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:492.4px;">
+				<a class="example-image-link" id="a24" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img24" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-5">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h24"></a></h3>
+					<p class="info" id="p24"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i24" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii24"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii24"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii24"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:430px;">
+				<a class="example-image-link" id="a25" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img25" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-1">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h25"></a></h3>
+					<p class="info" id="p25"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i25" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii25"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii25"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii25"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:409.2px;">
+				<a class="example-image-link" id="a26" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img26" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-2">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h26"></a></h3>
+					<p class="info" id="p26"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i26" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii26"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii26"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii26"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:388.4px;">
+				<a class="example-image-link" id="a27" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img27" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-3">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h27"></a></h3>
+					<p class="info" id="p27"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i27" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii27"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii27"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii27"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:430px;">
+				<a class="example-image-link" id="a28" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img28" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-4">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h28"></a></h3>
+					<p class="info" id="p28"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i28" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii28"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii28"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii28"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="item" style="position: absolute; top: 0px; left: 0px; width: 238px;height:388.4px;">
+				<a class="example-image-link" id="a29" href="" data-lightbox="example-set"
+					data-title="Click the right half of the image to move forward.">
+					<img class="example-image" src="" alt="" id="img29" /></a> 
+				<div class="content-item">
+					<span class="time"><a class="btn btn-5">简介</a></span>
+					<h3 class="title-item"><a href="#" id="h29"></a></h3>
+					<p class="info" id="p29"></p>
+					<ul class="list-inline">
+						<li><a href="#"><i id="i29" class="fa fa-eye"></i></a></li>
+						<li><a href="#"><i id="ii29"class="fa fa-comment"></i> </a></li>
+						<li><a href="#"><i id="iii29"class="fa fa-heart"></i> </a></li>
+						<li><a href="#"><i id="iiii29"class="fa fa-share"></i> </a></li>
+					</ul>
+				</div>
+
+			</div>
+			
+			
+			
+
+		</div> 
+
+		<!-- 动态生成dog卡片 -->
+
+	</div>
+
+
+	<!-- Once the page is loaded, initialized the plugin. -->
+	<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+
+	<script type="text/javascript" src="json/Dog.json"></script>
+
+	<script type="text/javascript" src="js/jquery.pinto.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+
+	<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+
+	<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+
+	<script src="js/lightbox-plus-jquery.min.js"></script>
+</body>
+
+</html>

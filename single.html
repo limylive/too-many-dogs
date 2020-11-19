@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Responsive Html5 Templates">
+    <meta name="author" content="">
+	
+    <title></title>
+	
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css">
+	
+	<!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+	
+	<!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!-- Custom Fonts -->
+    <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css"  type="text/css">
+	
+	<link rel="stylesheet" href="css/lightbox.css">
+	
+	<!-- Core JavaScript Files -->  	 
+	<script src="js/jquery-2.1.4.min.js"> </script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+	.example-image{
+		width: 150px;
+		height: 150px;
+		
+	}
+	</style>
+<body>
+
+	<!-- Static navbar -->
+	<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+	  <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">DOG</a>
+	  </div>
+	  <div class="navbar-collapse collapse">
+		  
+
+		
+		
+	
+
+	  </div><!--/.nav-collapse -->
+	</div>
+	
+    <header>
+		<div class="logo">
+			<a href="#"><p style="font-size: 50px;color: black;font-weight: bold;">Too  many dogs</p></a>
+		</div>
+    </header>
+	  
+	<script>
+	  </script>
+    <div id="page-content" class="sub-page">
+		<script>
+			//获取传入进来的Oject
+			var info=decodeURI(window.location.search);		             
+			
+			 var str1=info.split("?")[1].split("+");
+              
+
+		  
+			
+			 
+				  //通过get方式进行异步处理	    
+				 $.get("json/Dog.json",function(data){
+					 var sss="";
+					
+                        for(var vv of data.big){
+						
+						  if(str1[0]==vv.dname){							 
+                            sss="<center><article>"+
+			    	"<a class='example-image-link' href='"+ vv.src +"' data-lightbox='example-set' data-title='Click the right half of the image to move forward.'>"+
+				    "<img class='example-image' src='"+ vv.src +"' /></a>"+
+				    "<div class='content-item'>"+
+					"<span class='btn btn-1'>简介</span>"+
+					"<h3 class='title-item'><a href='#''>"+ vv.dname +"</a></h3>"+
+						"<p class='info'>"+ vv.intro +"</p>"+
+						"<ul class='list-inline'>"+
+						"<li><a href='#''><i class='fa fa-eye'></i>"+str1[1]+"</a></li>"+
+						"<li><a href='#''><i class='fa fa-comment'></i> "+str1[2]+"</a></li>"+
+						"<li><a href='#''><i class='fa fa-heart'></i> "+str1[3]+"</a></li>"+
+						"<li><a href='#''><i class='fa fa-share'></i> "+str1[4]+"</a></li>"
+						"</ul>"+
+						"</div>"+									
+						"</article></center>"    
+						  
+						  }		
+
+						  //将内容显示到页面上										 					
+						  $(".container").html(sss);						  						
+						}
+
+				 });
+			
+			</script>
+		<div class="container">		
+			<!--详细-->
+		</div>
+		
+	</div>
+
+    <!-- Once the page is loaded, initialized the plugin. -->
+    <script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+	
+	<script src="js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
